@@ -50,21 +50,21 @@ def st_stderr(dst):
     with st_redirect(sys.stderr, dst):
         yield
 
-def display_output(codes):
+def display_output():
     myanswer = None
     # ------------- CODE part --------------------
-    # col1, col2 = st.columns([1,1])
-    # with col1:
-        # st.write('コードを書く')
-        # codes = user_input(key)
+    col1, col2 = st.columns([1,1])
+    with col1:
+        st.write('コードを書く')
+        codes = st_ace(language='python', theme="nord_dark", font_size=18) #, key=key)
 
     # ------------ OUTPUT ------------------------
     # if st.button('Execute'):
-    # if codes:
-    # with col2:
-    st.write('アウトプット')
-    with st_stdout("code"):
-        exec(codes)
+    if codes:
+        with col2:
+            st.write('アウトプット')
+            with st_stdout("code"):
+                exec(codes)
             # Answer
             # myanswer = st.number_input('Your answer')
 
