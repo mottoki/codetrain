@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_ace import st_ace
 import pandas as pd
 from random import randint, shuffle
 from input_function import display_output
@@ -68,7 +69,9 @@ if st.session_state['cnt'] < 6:
     # Write your own code
     st.markdown(" ")
     key=f"{title}_q_{st.session_state['i']}"
-    display_output(key)
+    st.write('コードを書く')
+    codes = st_ace(language='python', theme="nord_dark", font_size=18, key=key)
+    display_output(codes)
 
     myanswer = None
 
