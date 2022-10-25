@@ -40,6 +40,7 @@ def st_redirect(src, dst):
         finally:
             src.write = old_write
 
+
 @contextmanager
 def st_stdout(dst):
     with st_redirect(sys.stdout, dst):
@@ -58,14 +59,17 @@ def display_output(val, key):
         st.write('コードを書く')
         codes = st_ace(value=val, language='python', theme="nord_dark",
             font_size=16, key=key)
-
     # ------------ OUTPUT ------------------------
     # if st.button('Execute'):
+    import sys
+    sys.tracebacklimit = 0
     if codes:
         with col2:
             st.write('アウトプット')
-            with st_stdout("code"):
-                exec(codes)
+            try:
+                with st_stdout("code"):
+                    exec(codes)
+            except Exception as e: st.write(e)
             # Answer
             # myanswer = st.number_input('Your answer')
 
