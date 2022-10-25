@@ -10,9 +10,9 @@ import sys
 
 # --------------- FUNCTION ------------------
 
-def user_input(key):
-    # return st.text_area('text to analyse', key='userinput')
-    return st_ace(language='python', theme="nord_dark", font_size=18, key=key)
+# def user_input(key):
+#     # return st.text_area('text to analyse', key='userinput')
+#     return st_ace(language='python', theme="nord_dark", font_size=18, key=key)
 
 def execute_input(codes):
     output = exec(codes)

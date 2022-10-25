@@ -70,7 +70,7 @@ if st.session_state['cnt'] < 6:
     st.markdown(" ")
     key=f"{title}_q_{st.session_state['i']}"
     st.write('コードを書く')
-    codes = st_ace(language='python', theme="nord_dark", font_size=18, key=key)
+    codes = st_ace(language='python') #key=key, theme="nord_dark", font_size=18)
     display_output(codes)
 
     myanswer = None
