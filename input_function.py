@@ -50,13 +50,14 @@ def st_stderr(dst):
     with st_redirect(sys.stderr, dst):
         yield
 
-def display_output():
+def display_output(val, key):
     myanswer = None
     # ------------- CODE part --------------------
     col1, col2 = st.columns([1,1])
     with col1:
         st.write('コードを書く')
-        codes = st_ace(language='python', theme="nord_dark", font_size=18) #, key=key)
+        codes = st_ace(value=val, language='python', theme="nord_dark",
+            font_size=16, key=key)
 
     # ------------ OUTPUT ------------------------
     # if st.button('Execute'):

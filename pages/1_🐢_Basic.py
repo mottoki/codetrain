@@ -10,14 +10,14 @@ title = "Basic"
 
 st.set_page_config(page_title=title, layout="wide")
 
-hide_table_row_index = """
-    <style>
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    </style>
-    """
+# hide_table_row_index = """
+#     <style>
+#     footer {visibility: hidden;}
+#     header {visibility: hidden;}
+#     </style>
+#     """
 
-st.markdown(hide_table_row_index, unsafe_allow_html=True)
+# st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
 # -------------- INITIALISE ----------------------
 col1, col2, col3, col4 = st.columns([1,1,1,1])
@@ -34,6 +34,7 @@ with col2:
         st.session_state['i'] = selectedi # selected random number
         st.session_state['cnt'] = 1 # count of question
         st.session_state['correct'] = 0 # count of correct answer
+        st.session_state['value'] = "" # Initial value of ace editor
 
     # When the button for next problem clicked
     increment = st.button("次の問題")
@@ -44,6 +45,7 @@ with col2:
         # Store the variables
         st.session_state.i = selectedi # selected random number
         st.session_state['cnt'] += 1 # count of question
+        st.session_state['value'] = "" # Initial value of ace editor
 
 #  ----------------- QUESTIONS ----------------------
 dfq = basic_questions()
@@ -68,10 +70,8 @@ if st.session_state['cnt'] < 6:
 
     # Write your own code
     st.markdown(" ")
-    # key=f"{title}_q_{st.session_state['i']}"
-    # st.write('コードを書く')
-    # codes = st_ace(language='python') #key=key, theme="nord_dark", font_size=18)
-    display_output()
+    key=f"{title}_q_{st.session_state['i']}"
+    display_output(st.session_state['value'], key)
 
     myanswer = None
 
